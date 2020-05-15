@@ -41,6 +41,9 @@ layout: default
   <li>Flex = A program that generates lexers. Takes a list of regular expressions to specify tokens, and then generates a whole source file (in  C or Java if using Jflex) according to those regular expressions.</li>
 </ul>  
 
+<h3>Parser</h3>
+<p>The parser turns a list of tokens into a tree of nodes. The parser adds structure to the ordered list of tokens the lexer produces. To stop ambiguities, the parser must take into account parenthesis and the order of operations.
+</p>
 
 <h3>Contributors</h3>
 <ul>
