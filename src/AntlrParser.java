@@ -13,9 +13,12 @@ public class AntlrParser {
         EasyJLexer easyJLexer = new EasyJLexer(charStream);
         CommonTokenStream commonTokenStream = new CommonTokenStream((easyJLexer));
         EasyJParser easyJParser = new EasyJParser(commonTokenStream);
+        
 
-        for(Token x :easyJLexer.getAllTokens()) {
-
+        System.out.println();
+        
+        for(Token x :easyJLexer.getAllTokens()) {        	
+        	
         	System.out.println( x.getType() + ": " +  x.getText());
 
         }
