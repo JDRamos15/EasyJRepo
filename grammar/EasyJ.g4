@@ -46,7 +46,7 @@ NUMERIC : [0-9];
 //IDENTIFIER : [{idstart} {idstart | NUMERIC} ];
 
 
-KEYWORDS : 'display' | 'for' ; 
+KEYWORDS : 'loop' | 'from' | 'to' | 'reverse' | 'display' | 'function' ; 
 
 
 SEPARATOR : ';'|','|'.'|'('|')'|'{'|'}'|'['|']' ;

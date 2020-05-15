@@ -7,13 +7,7 @@
 /EasyJListener.java
 /EasyJParser.java
 /.gitignore
-/easyJBaseListener.class
-/easyJLexer.class
-/easyJListener.class
-/easyJParser$IdstartContext.class
-/easyJParser$NullliteralContext.class
-/easyJParser.class
-/easyJParser$AlphabeticContext.class
+/AntlrParser.class
 /EasyJBaseListener.class
 /EasyJLexer.class
 /EasyJListener.class
@@ -21,5 +15,4 @@
 /EasyJParser$IdstartContext.class
 /EasyJParser$NullliteralContext.class
 /EasyJParser.class
-/EasyJParser$LowercaseContext.class
-/EasyJParser$IntegerliteralContext.class
+/JFLex/
