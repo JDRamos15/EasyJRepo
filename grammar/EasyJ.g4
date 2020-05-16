@@ -1,159 +1,63 @@
-lexer grammar EasyJ;
+grammar EasyJ;
+
+
+
+literal
+	:	IntegerLiteral		
+	|	CharacterLiteral
+	|	StringLiteral
+	|	NullLiteral
+	;
+	
+
+methodName
+	:	Identifier
+	;	
+
+
+
 
 // LEXER
 
 //Keywords
 
-ABSTRACT : 'abstract';
-ASSERT : 'assert';
-BOOLEAN : 'boolean';
-BREAK : 'break';
-BYTE : 'byte';
-CASE : 'case';
-CATCH : 'catch';
-CHAR : 'char';
+LOOP : 'loop' ;
+FROM : 'from' ;
+TO : 'to' ;
+REVERSE : 'reverse' ;
+DISPLAY : 'display' ;
+FUNCTION : 'function' ;
 CLASS : 'class';
-CONST : 'const';
-CONTINUE : 'continue';
-DEFAULT : 'default';
-DO : 'do';
-DOUBLE : 'double';
-ELSE : 'else';
-ENUM : 'enum';
-EXTENDS : 'extends';
-FINAL : 'final';
-FINALLY : 'finally';
-FLOAT : 'float';
 FOR : 'for';
-IF : 'if';
-GOTO : 'goto';
-IMPLEMENTS : 'implements';
-IMPORT : 'import';
-INSTANCEOF : 'instanceof';
-INT : 'int';
-INTERFACE : 'interface';
-LONG : 'long';
-NATIVE : 'native';
-NEW : 'new';
-PACKAGE : 'package';
-PRIVATE : 'private';
-PROTECTED : 'protected';
 PUBLIC : 'public';
 RETURN : 'return';
-SHORT : 'short';
-STATIC : 'static';
-STRICTFP : 'strictfp';
-SUPER : 'super';
-SWITCH : 'switch';
-SYNCHRONIZED : 'synchronized';
-THIS : 'this';
-THROW : 'throw';
-THROWS : 'throws';
-TRANSIENT : 'transient';
-TRY : 'try';
 VOID : 'void';
-VOLATILE : 'volatile';
-WHILE : 'while';
+
 
 //Integer Literals
 
 IntegerLiteral	:	DecimalIntegerLiteral	;
 
-fragment
-DecimalIntegerLiteral
-	:	DecimalNumeral IntegerTypeSuffix?
-	;
+fragment DecimalIntegerLiteral	:	DecimalNumeral IntegerTypeSuffix?	;
 
 
-fragment
-IntegerTypeSuffix
-	:	[lL]
-	;
+fragment IntegerTypeSuffix	:	[lL]	;
 
-fragment
-DecimalNumeral
-	:	'0'
-	|	NonZeroDigit (Digits? | Underscores Digits)
-	;
+fragment DecimalNumeral 	:	'0'	|	NonZeroDigit (Digits? | Underscores Digits)	;
 
-fragment
-Digits
-	:	Digit (DigitsAndUnderscores? Digit)?
-	;
+fragment Digits	:	Digit (DigitsAndUnderscores? Digit)?	;
 
-fragment
-Digit
-	:	'0'
-	|	NonZeroDigit
-	;
+fragment Digit	:	'0'	|	NonZeroDigit	;
 
-fragment
-NonZeroDigit
-	:	[1-9]
-	;
+fragment NonZeroDigit	:	[1-9]	;
 
-fragment
-DigitsAndUnderscores
-	:	DigitOrUnderscore+
-	;
+fragment DigitsAndUnderscores	:	DigitOrUnderscore+	;
 
-fragment
-DigitOrUnderscore
-	:	Digit
-	|	'_'
-	;
+fragment DigitOrUnderscore	:	Digit	|	'_' 	;
 
-fragment
-Underscores
-	:	'_'+
-	;
+fragment Underscores	:	'_'+	;
 
 
-//  Floating-Point Literals
-
-FloatingPointLiteral	:	DecimalFloatingPointLiteral		;
-
-fragment
-DecimalFloatingPointLiteral
-	:	Digits '.' Digits? ExponentPart? FloatTypeSuffix?
-	|	'.' Digits ExponentPart? FloatTypeSuffix?
-	|	Digits ExponentPart FloatTypeSuffix?
-	|	Digits FloatTypeSuffix
-	;
-
-fragment
-ExponentPart
-	:	ExponentIndicator SignedInteger
-	;
-
-fragment
-ExponentIndicator
-	:	[eE]
-	;
-
-fragment
-SignedInteger
-	:	Sign? Digits
-	;
-
-fragment
-Sign
-	:	[+-]
-	;
-
-fragment
-FloatTypeSuffix
-	:	[fFdD]
-	;
-
-
-
-// §3.10.3 Boolean Literals
-
-BooleanLiteral
-	:	'true'
-	|	'false'
-	;
 
 // Character Literals
 
@@ -165,7 +69,9 @@ SingleCharacter
 	;
 	
 	
+	
 // String Literals
+
 StringLiteral	:	'"' StringCharacters? '"'	;
 
 fragment StringCharacters	:	StringCharacter+	;
@@ -189,58 +95,12 @@ fragment ZeroToThree	:	[0-3]	;
 
 NullLiteral	:	'null'	;
 
-//Separators
 
-LPAREN : '(';
-RPAREN : ')';
-LBRACE : '{';
-RBRACE : '}';
-LBRACK : '[';
-RBRACK : ']';
-SEMI : ';';
-COMMA : ',';
-DOT : '.';
 
-// Operators
+SEPARATOR : ';'|','|'.'|'('|')'|'{'|'}'|'['|']' ;
 
-ASSIGN : '=';
-GT : '>';
-LT : '<';
-BANG : '!';
-TILDE : '~';
-QUESTION : '?';
-COLON : ':';
-EQUAL : '==';
-LE : '<=';
-GE : '>=';
-NOTEQUAL : '!=';
-AND : '&&';
-OR : '||';
-INC : '++';
-DEC : '--';
-ADD : '+';
-SUB : '-';
-MUL : '*';
-DIV : '/';
-BITAND : '&';
-BITOR : '|';
-CARET : '^';
-MOD : '%';
-ARROW : '->';
-COLONCOLON : '::';
 
-ADD_ASSIGN : '+=';
-SUB_ASSIGN : '-=';
-MUL_ASSIGN : '*=';
-DIV_ASSIGN : '/=';
-AND_ASSIGN : '&=';
-OR_ASSIGN : '|=';
-XOR_ASSIGN : '^=';
-MOD_ASSIGN : '%=';
-LSHIFT_ASSIGN : '<<=';
-RSHIFT_ASSIGN : '>>=';
-URSHIFT_ASSIGN : '>>>=';
-
+OPERATOR : '>'|'<'|'!'|'~'|'?'|':'|'=='|'<='|'>='|'!='|'&&'|'|'|'++'|'--'|'+'|'-'|'*'|'/'|'&'|'^'|'%';
 
 
 //Identifiers (must appear after all keywords in the grammar)
