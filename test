@@ -1,7 +1,5 @@
-loop from 1 to 10;
-
-reverse loop from 10 to 0;
-
-display (“Hello World”);
-
-function testMethod();
+public class HelloWorld { 
+   public static void main(String[] args) { 
+      System.out.println("Hello, World");
+   }
+}
